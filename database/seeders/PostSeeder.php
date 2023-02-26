@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Image;
+use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +14,14 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $posts = Post::factory(300)->create();
+
+        foreach ($posts as $post) {
+
+            $post->tags()->attach([
+                rand(1, 4),
+                rand(5, 8),
+            ]);
+        }
     }
 }
