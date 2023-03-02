@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="h-screen bg-base-200">
+    <div class="min-h-screen bg-base-200 pt-20 flex-col flex justify-center items-center">
        <div class="grid grid-cols-4 gap-4">
         @foreach ($posts as $post)
         <div class="card card-compact w-96 bg-base-100 shadow-xl">
-            <figure><img src="https://www.elagoradiario.com/wp-content/uploads/2021/04/Pino-Castrej%C3%B3n-1140x600.jpg" alt="Shoes" /></figure>
+            <figure><img src="{{Storage::url($post->image->url)}}" alt="{{$post->name}}" /></figure>
             <div class="card-body">
               <h2 class="card-title">{{$post->name}}</h2>
               <p>{{$post->extract}}</p>
@@ -14,5 +14,8 @@
         </div>
         @endforeach
        </div>
+      <div class="mt-4">
+        {{$posts->links()}}
+      </div>
     </div>
 </x-app-layout>

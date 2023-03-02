@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     //
     public function index() {
-        $posts = Post::all();
+        $posts = Post::where('status', Post::PUBLICADO)->latest('id')->paginate(20);
 
         return view('posts.index', compact('posts'));
     }

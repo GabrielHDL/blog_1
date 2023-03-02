@@ -1,11 +1,14 @@
 <x-app-layout>
-    <div class="flex flex-col justify-center items-center gap-8">
+    <div class="h-96 w-full mb-8">
+        <img class="h-full w-full object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="">
+    </div>
+    <div class="container text-justify flex flex-col justify-center items-center gap-8">
         <div>
-            <h1 class="text-xl font-bold text-black">{{$post->name}}</h1>
+            <h1 class="text-xl font-bold">{{$post->name}}</h1>
         </div>
     
         <div>
-            <p class="text-gray-700">{{$post->body}}</p>
+            <p>{{$post->body}}</p>
         </div>
     </div>
 </x-app-layout>

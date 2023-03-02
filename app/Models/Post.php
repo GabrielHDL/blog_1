@@ -12,6 +12,11 @@ class Post extends Model
     const BORRADOR =1;
     const PUBLICADO =2;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function user(){
         return $this-> belongsTo(user:: class);
     }
@@ -24,5 +29,12 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+        //Relacion uno a uno polimorfica
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

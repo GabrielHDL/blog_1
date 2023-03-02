@@ -9,6 +9,10 @@ module.exports = {
         './resources/views/**/*.blade.php',
     ],
 
+    corePlugins: {
+        container: false,
+    },
+
     theme: {
         extend: {
             fontFamily: {
