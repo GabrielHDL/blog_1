@@ -31,38 +31,46 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required|unique:categories|max:255',
+            'slug' => 'required|unique:categories|max:255',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        $category = category::create($request->all());
+
+        return redirect()->route('admin.categories.edit', $category)->with('info', 'Categoría creada con éxito');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:categories|max:255',
+            'slug' => "required|unique:categories,slug,$category->id|max:255",
+        ]);
+
+        $category->update($request->all());
+
+        return redirect()->route('admin.categories.edit', $category)->with('info', 'Categoría actualizada con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('admin.categories.index')->with('info', 'Categoría eliminada');
     }
 }

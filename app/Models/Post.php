@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id', 'timestamps'];
+
     const BORRADOR =1;
     const PUBLICADO =2;
 
@@ -18,7 +20,7 @@ class Post extends Model
     }
 
     public function user(){
-        return $this-> belongsTo(user:: class);
+        return $this-> belongsTo(User:: class);
     }
 
     public function category()

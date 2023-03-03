@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Crear Categoría')
+@section('title', 'Editar Categoría')
 
 @section('content_header')
-    <h1>Crear nueva categoría</h1>
+    <h1>Editar Categoría</h1>
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
 
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.categories.store']) !!}
+            {!! Form::model($category, ['route' => ['admin.categories.update', $category], 'method' => 'put']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Nombre de la categoría') !!}
                     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre de la categoría']) !!}
@@ -34,7 +34,7 @@
                     @enderror
 
                 </div>
-                {!! Form::submit('Crear categoría', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Actualizar categoría', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
         </div>
     </div>
@@ -43,12 +43,12 @@
 @section('js')
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
     <script>
-        $(document).ready( function() {
-            $("#name").stringToSlug({
-                setEvents: 'keyup keydown blur',
-                getPut: '#slug',
-                space: '-'
-            });
+    $(document).ready( function() {
+        $("#name").stringToSlug({
+            setEvents: 'keyup keydown blur',
+            getPut: '#slug',
+            space: '-'
         });
+    });
     </script>
-@endsection
+@stop

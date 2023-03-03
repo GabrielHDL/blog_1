@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Categorías')
+@section('title', 'Etiquetas')
 
 @section('content_header')
 {{-- @can('admin.categories.create') --}}
-    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary float-right">
+    <a href="{{ route('admin.tags.create') }}" class="btn btn-primary float-right">
         <i class="fas fa-plus"></i>
-        Nueva categoría
+        Nueva Etiqueta
     </a>
 {{-- @endcan --}}
-    <h1>Lista de categorías</h1>
+    <h1>Lista de etiquetas</h1>
 @stop
 
 @section('content')
@@ -31,18 +31,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($tags as $tag)
                         <tr>
-                            <td>{{ $category->id }}</td>
-                            <td>{{ $category->name }}</td>
+                            <td>{{ $tag->id }}</td>
+                            <td>{{ $tag->name }}</td>
                             <td width="10px">
                                 {{-- @can('admin.categories.edit') --}}
-                                    <a href="{{route('admin.categories.edit', $category)}}" class="btn btn-sm btn-primary">Editar</a>
+                                    <a href="{{route('admin.tags.edit', $tag)}}" class="btn btn-sm btn-primary">Editar</a>
                                 {{-- @endcan --}}
                             </td>
                             <td width="10px">
                                 {{-- @can('admin.categories.destroy') --}}
-                                    <form action="{{route('admin.categories.destroy', $category)}}" method="POST">
+                                    <form action="{{route('admin.tags.destroy', $tag)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-danger">Eliminar</button>
@@ -55,4 +55,5 @@
             </table>
         </div>
     </div>
+
 @stop

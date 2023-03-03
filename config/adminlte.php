@@ -300,12 +300,22 @@ return [
         [
             'text'        => 'Dashboard',
             'route'         => 'admin.home',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-fw fa-tachometer-alt',
         ],
         [
             'text'        => 'Categorías',
             'route'         => 'admin.categories.index',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fab fa-fw fa-buffer',
+        ],
+        [
+            'text'        => 'Etiquetas',
+            'route'         => 'admin.tags.index',
+            'icon'        => 'far fa-fw fa-bookmark',
+        ],
+        [
+            'text'        => 'Posts',
+            'route'         => 'admin.posts.index',
+            'icon'        => 'fas fa-fw fa-clipboard',
         ],
         ['header' => 'account_settings'],
         [

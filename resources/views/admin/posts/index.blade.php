@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Categorías')
+@section('title', 'Posts')
 
 @section('content_header')
-{{-- @can('admin.categories.create') --}}
-    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary float-right">
+{{-- @can('admin.posts.create') --}}
+    <a href="{{ route('admin.posts.create') }}" class="btn btn-primary float-right">
         <i class="fas fa-plus"></i>
-        Nueva categoría
+        Nuevo post
     </a>
 {{-- @endcan --}}
-    <h1>Lista de categorías</h1>
+    <h1>Lista de Posts</h1>
 @stop
 
 @section('content')
@@ -31,18 +31,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($posts as $post)
                         <tr>
-                            <td>{{ $category->id }}</td>
-                            <td>{{ $category->name }}</td>
+                            <td>{{ $post->id }}</td>
+                            <td>{{ $post->name }}</td>
                             <td width="10px">
-                                {{-- @can('admin.categories.edit') --}}
-                                    <a href="{{route('admin.categories.edit', $category)}}" class="btn btn-sm btn-primary">Editar</a>
+                                {{-- @can('admin.posts.edit') --}}
+                                    <a href="{{route('admin.posts.edit', $post)}}" class="btn btn-sm btn-primary">Editar</a>
                                 {{-- @endcan --}}
                             </td>
                             <td width="10px">
-                                {{-- @can('admin.categories.destroy') --}}
-                                    <form action="{{route('admin.categories.destroy', $category)}}" method="POST">
+                                {{-- @can('admin.posts.destroy') --}}
+                                    <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-danger">Eliminar</button>

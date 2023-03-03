@@ -21,7 +21,7 @@ class ImageFactory extends Factory
         $faker->addProvider(new FakerPicsumImagesProvider($faker));
 
         return [
-            'url' => 'posts/' . $faker->image($dir = 'public/storage/posts', $width = 640, $height = 480, $isFullPath = false),
+            'url' => 'posts/' . $faker->image($dir = 'public/storage/posts', $width = 1280, $height = 960, $isFullPath = false),
         ];
     }
 }

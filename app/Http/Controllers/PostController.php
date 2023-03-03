@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    //
     public function index() {
         $posts = Post::where('status', Post::PUBLICADO)->latest('id')->paginate(20);
 
@@ -15,6 +14,15 @@ class PostController extends Controller
     }
 
     public function show(Post $post) {
-        return view('posts.show', compact('post'));
+        $author = $post->user;
+
+        $relateds = Post::where('category_id', $post->category_id)
+                ->where('status', Post::PUBLICADO)
+                ->where('id', '!=', $post->id)
+                ->latest('id')
+                ->take(4)
+                ->get();
+
+        return view('posts.show', compact('post', 'relateds', 'author'));
     }
 }
