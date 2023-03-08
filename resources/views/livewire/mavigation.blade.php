@@ -1,18 +1,20 @@
 <header class="fixed top-0 right-0 left-0 w-full z-[999] shadow-md shadow-[rgba(0,0,0,0.4)]" x-data>
     <div class="navbar bg-base-100">
         <div class="flex-1">
-          <a href="{{route('posts.index')}}" class="btn btn-ghost normal-case text-xl">Blog Chingon</a>
+          <a href="{{route('posts.index')}}" class="btn btn-ghost normal-case text-xl">
+            <img class="w-auto h-10" src="{{asset('assets/logos/logo_lasdev.svg')}}" alt="">
+          </a>
         </div>
         <div class="flex-none gap-2">
           <div class="form-control">
             <input wire:model="search" type="text" placeholder="Search" class="input input-bordered" />
-            <div class="p-4 gap-4 h-auto w-1/4 z-10 rounded-xl bg-white fixed shadow-lg shadow-black top-20 right-4 hidden" :class="{ 'hidden': !$wire.open }" @click.away="$wire.open = false">
+            <div class="p-4 gap-4 h-auto w-full sm:w-1/4 z-10 rounded-xl bg-white fixed shadow-lg shadow-black top-20 right-0 sm:right-4 hidden" :class="{ 'hidden': !$wire.open }" @click.away="$wire.open = false">
               @foreach ($posts as $post)
                   <a href="{{route('posts.show', $post)}}" class="flex items-center bg-gray-100 rounded-lg overflow-hidden gap-3 w-full h-28 @if($loop->last) @else mb-2 @endif">
                     <figure class="w-28 h-28">
                       <img class="object-center object-cover w-full h-full rounded-lg" src="{{Storage::url($post->image->url)}}" alt="{{$post->name}}">
                     </figure>
-                    <span>{{$post->name}}</span>
+                    <span class="flex-1">{{$post->name}}</span>
                   </a>
               @endforeach
             </div>
