@@ -3,12 +3,12 @@
 @section('title', 'Etiquetas')
 
 @section('content_header')
-{{-- @can('admin.categories.create') --}}
+@can('admin.tags.create')
     <a href="{{ route('admin.tags.create') }}" class="btn btn-primary float-right">
         <i class="fas fa-plus"></i>
         Nueva Etiqueta
     </a>
-{{-- @endcan --}}
+@endcan
     <h1>Lista de etiquetas</h1>
 @stop
 

@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Devas Blog',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Devas</b>Blog',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -301,86 +301,51 @@ return [
             'text'        => 'Dashboard',
             'route'         => 'admin.home',
             'icon'        => 'fas fa-fw fa-tachometer-alt',
+            'can'  => 'admin.home',
         ],
+        [
+            'text'        => 'Usuarios',
+            'route'         => 'admin.users.index',
+            'icon'        => 'fas fa-fw fa-users',
+            'can'  => 'admin.users.index',
+        ],
+        [
+            'text'        => 'Roles de usuario',
+            'route'         => 'admin.roles.index',
+            'icon'        => 'fas fa-fw fa-users-cog',
+            'can'  => 'admin.users.index',
+        ],
+        [
+            'text'        => 'Ir a Devas Blog',
+            'url'         => '/',
+            'icon'        => 'fas fa-fw fa-tachometer-alt',
+        ],
+        ['header' => 'OPCIONES DE BLOG'],
         [
             'text'        => 'Categorías',
             'route'         => 'admin.categories.index',
             'icon'        => 'fab fa-fw fa-buffer',
+            'active' => ['admin/categories*'],
+            'can'  => 'admin.categories.index',
         ],
         [
             'text'        => 'Etiquetas',
             'route'         => 'admin.tags.index',
             'icon'        => 'far fa-fw fa-bookmark',
+            'active' => ['admin/tags*'],
+            'can'  => 'admin.tags.index',
         ],
         [
             'text'        => 'Posts',
             'route'         => 'admin.posts.index',
             'icon'        => 'fas fa-fw fa-clipboard',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'can'  => 'admin.posts.index',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'       => 'Crear nuevo post',
+            'route'        => 'admin.posts.create',
+            'icon'        => 'fas fa-fw fa-file',
+            'can'  => 'admin.posts.create',
         ],
     ],
 
@@ -536,5 +501,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

@@ -3,12 +3,12 @@
 @section('title', 'Categorías')
 
 @section('content_header')
-{{-- @can('admin.categories.create') --}}
+@can('admin.categories.create')
     <a href="{{ route('admin.categories.create') }}" class="btn btn-primary float-right">
         <i class="fas fa-plus"></i>
         Nueva categoría
     </a>
-{{-- @endcan --}}
+@endcan
     <h1>Lista de categorías</h1>
 @stop
 
@@ -36,18 +36,18 @@
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
                             <td width="10px">
-                                {{-- @can('admin.categories.edit') --}}
+                                @can('admin.categories.edit')
                                     <a href="{{route('admin.categories.edit', $category)}}" class="btn btn-sm btn-primary">Editar</a>
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                             <td width="10px">
-                                {{-- @can('admin.categories.destroy') --}}
+                                @can('admin.categories.destroy')
                                     <form action="{{route('admin.categories.destroy', $category)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-danger">Eliminar</button>
                                     </form>
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

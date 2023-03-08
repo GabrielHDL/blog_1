@@ -17,17 +17,17 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@test.test',
             'password' => bcrypt('123456'),
-        ]);
+        ])->assignRole('Admin');
 
         User::create([
             'name' => 'Valery',
             'email' => 'valery@test.test',
             'password' => bcrypt('123456'),
-        ]);
+        ])->assignRole('Blogger');
         User::create([
             'name' => 'Denisse',
             'email' => 'denisse@test.test',
             'password' => bcrypt('123456'),
-        ]);
+        ])->assignRole('Blogger');
     }
 }

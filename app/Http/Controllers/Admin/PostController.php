@@ -12,14 +12,21 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:admin.posts.index')->only('index');
+        $this->middleware('can:admin.posts.create')->only('create', 'store');
+        $this->middleware('can:admin.posts.edit')->only('edit', 'update');
+        $this->middleware('can:admin.posts.destroy')->only('destroy');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = Post::all();
-
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index');
     }
 
     /**
@@ -60,6 +67,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+
+        $this->authorize('author', $post);
+
         $categories = category::pluck('name', 'id');
 
         $tags = Tag::all();
@@ -72,6 +82,9 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
+
+        $this->authorize('author', $post);
+
         $post->update($request->all());
 
         if ($request->file('file')) {
@@ -102,6 +115,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        $this->authorize('author', $post);
+
         $post->delete();
 
         return redirect()->route('admin.posts.index', $post)->with('info', 'Post eliminado');

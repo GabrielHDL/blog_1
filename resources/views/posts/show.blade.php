@@ -28,7 +28,7 @@
             <aside>
                 <div class="md:sticky top-10">
                     {{-- Titulo de la categoria relacionada --}}
-                    <h1 class="text-2xl font-bold mb-4">Más en {{$post->category->name}}</h1>
+                    <h1 class="text-2xl font-bold mb-4">Más en <a href="{{route('posts.category', $post->category)}}">{{$post->category->name}}</a></h1>
                     <ul>
                         {{-- Recorrido para obtener los post Relacionados --}}
                         @foreach ($relateds as $related)
