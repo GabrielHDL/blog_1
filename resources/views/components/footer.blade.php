@@ -7,9 +7,9 @@
             </path>
         </svg>
         <p class="font-bold">
-            ACME Industries Ltd. <br />Providing reliable tech since 1992
+            Las Dev Blog® <br />Desde que aprendimos ❤️
         </p>
-        <p>Copyright © 2023 - All right reserved</p>
+        <p>Copyright © @php echo date('Y'); @endphp - Todos los derechos reservados.</p>
     </div>
     <div>
         <div class="grid grid-flow-col gap-4">

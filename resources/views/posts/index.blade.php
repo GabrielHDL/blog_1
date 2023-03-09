@@ -12,7 +12,7 @@
         @foreach ($posts as $post)
         <div class="card card-compact w-full bg-base-100 shadow-xl @if($loop->first) image-full md:col-span-2 @endif">
             <figure class="w-full @if($loop->first) h-[30rem] @else h-[16rem] @endif">
-              <img class="h-full w-full object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="{{$post->name}}" />
+              <img class="h-full w-full object-cover object-center" src="@if ($post->image) {{Storage::url($post->image->url)}} @else {{asset('assets/img/default_blog_wall.jpg')}} @endif" alt="{{$post->name}}" />
             </figure>
             <div class="card-body">
               <h2 class="card-title">{{Str::limit($post->name, 25)}}</h2>

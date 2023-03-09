@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="h-96 w-full mb-8">
-        <img class="h-full w-full object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="">
+        <img class="h-full w-full object-cover object-center" src="@if ($post->image) {{Storage::url($post->image->url)}} @else {{asset('assets/img/default_blog_wall.jpg')}} @endif" alt="">
     </div>
     <div class="container">
         <div class="grid sm:grid-cols-3 gap-6">
@@ -26,7 +26,7 @@
             </div>
             {{-- Sidebar con elementos relacionados --}}
             <aside>
-                <div class="md:sticky top-10">
+                <div class="md:sticky top-20">
                     {{-- Titulo de la categoria relacionada --}}
                     <h1 class="text-2xl font-bold mb-4">Más en <a href="{{route('posts.category', $post->category)}}">{{$post->category->name}}</a></h1>
                     <ul>
@@ -35,7 +35,7 @@
                             <li class="mb-4">
                                 <a class="grid grid-cols-3" href="{{route('posts.show', $related)}}">
                                     @if ($related->image)
-                                        <img class="w-full col-span-1 h-20 md:h-36 lg:h-20 object-cover object-center rounded-md" src="{{Storage::url($related->image->url)}}" alt="">
+                                        <img class="w-full col-span-1 h-20 md:h-36 lg:h-20 object-cover object-center rounded-md" src="@if ($related->image) {{Storage::url($related->image->url)}} @else {{asset('assets/img/default_blog_wall.jpg')}} @endif" alt="">
                                     @else
                                         <img class="w-full col-span-1 h-20 md:h-36 lg:h-20 object-cover object-center rounded-md" src="{{asset('img/bckhdlmaingreen.jpg')}}" alt="">
                                     @endif

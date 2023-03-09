@@ -7,12 +7,12 @@
         </div>
         <div class="flex-none gap-2">
           <div class="form-control">
-            <input wire:model="search" type="text" placeholder="Search" class="input input-bordered" />
+            <input wire:model="search" type="text" placeholder="Buscar" class="input input-bordered" />
             <div class="p-4 gap-4 h-auto w-full sm:w-1/4 z-10 rounded-xl bg-white fixed shadow-lg shadow-black top-20 right-0 sm:right-4 hidden" :class="{ 'hidden': !$wire.open }" @click.away="$wire.open = false">
               @foreach ($posts as $post)
                   <a href="{{route('posts.show', $post)}}" class="flex items-center bg-gray-100 rounded-lg overflow-hidden gap-3 w-full h-28 @if($loop->last) @else mb-2 @endif">
                     <figure class="w-28 h-28">
-                      <img class="object-center object-cover w-full h-full rounded-lg" src="{{Storage::url($post->image->url)}}" alt="{{$post->name}}">
+                      <img class="object-center object-cover w-full h-full rounded-lg" src="@if ($post->image) {{Storage::url($post->image->url)}} @else {{asset('assets/img/default_blog_wall.jpg')}} @endif" alt="{{$post->name}}">
                     </figure>
                     <span class="flex-1">{{$post->name}}</span>
                   </a>

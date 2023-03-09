@@ -69,7 +69,7 @@
             @isset ($post->image)
                 <img id="picture" src="{{Storage::url($post->image->url)}}" alt="">
             @else
-                <img id="picture" src="{{asset('img/bckhdlmaingreen.jpg')}}" alt="">
+                <img id="picture" src="{{asset('assets/img/default_blog_wall.jpg')}}" alt="">
             @endisset
         </div>
     </div>
